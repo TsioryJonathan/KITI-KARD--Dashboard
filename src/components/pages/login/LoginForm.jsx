@@ -36,98 +36,116 @@ export function LoginForm() {
   };
 
   return (
-    <Card className="mx-auto max-w-md w-full shadow-lg">
-      <CardHeader className="space-y-1">
-        <div className="flex justify-center mb-2">
-          <Image
-            src={assets.logo}
-            alt="KITI-KARD"
-            className="w-30 h-30 object-cover"
-          ></Image>
-        </div>
-        <CardTitle className="text-2xl text-center">Welcome back</CardTitle>
-        <CardDescription className="text-center">
-          Sign in to manage your NFC business cards
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit}>
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="name@example.com"
-                required
-                className="bg-background"
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="text-sm text-text underline-offset-4 hover:underline"
-                >
-                  Forgot password?
-                </a>
+    <div>
+      <Card className="mx-auto max-w-md w-full shadow-lg">
+        <CardHeader className="space-y-1">
+          <div className="flex justify-center mb-2">
+            <Image
+              src={assets.logo}
+              alt="KITI-KARD"
+              className="w-30 h-30 object-cover"
+            ></Image>
+          </div>
+          <CardTitle className="text-2xl text-center">Welcome back</CardTitle>
+          <CardDescription className="text-center">
+            Sign in to manage your NFC business cards
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit}>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  required
+                  className="bg-background"
+                />
               </div>
-              <Input
-                id="password"
-                type="password"
-                required
-                className="bg-background"
-              />
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="remember" className={"text-text"} />
-              <Label
-                htmlFor="remember"
-                className="text-sm font-normal text-text"
+              <div className="grid gap-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password">Password</Label>
+                  <a
+                    href="#"
+                    className="text-sm text-text underline-offset-4 hover:underline"
+                  >
+                    Forgot password?
+                  </a>
+                </div>
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  className="bg-background"
+                />
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="remember" className={"text-text"} />
+                <Label
+                  htmlFor="remember"
+                  className="text-sm font-normal text-text"
+                >
+                  Remember me
+                </Label>
+              </div>
+              <CustomButton
+                type="submit"
+                className="w-full"
+                disabled={isLoading}
               >
-                Remember me
-              </Label>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  "Sign in"
+                )}
+              </CustomButton>
             </div>
-            <CustomButton type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                "Sign in"
-              )}
+          </form>
+        </CardContent>
+        <CardFooter className="flex flex-col gap-4">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <div className="w-full grid grid-cols-2 gap-4">
+            <CustomButton>
+              <span>
+                <FcGoogle />
+              </span>
+              Google
+            </CustomButton>
+            <CustomButton>
+              <span>
+                <FaGithub />
+              </span>
+              Github
             </CustomButton>
           </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-4">
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-card px-2 text-muted-foreground">
-              Or continue with
-            </span>
+        </CardFooter>
+      </Card>
+      <div className="mt-8 text-center">
+        <div className="inline-flex items-center justify-center p-1 bg-background/50 backdrop-blur-sm border rounded-full">
+          <div className="flex space-x-1">
+            <div className="size-2 rounded-full bg-primary animate-pulse" />
+            <div className="size-2 rounded-full bg-primary/70 animate-pulse [animation-delay:0.2s]" />
+            <div className="size-2 rounded-full bg-primary/40 animate-pulse [animation-delay:0.4s]" />
           </div>
         </div>
-        <div className="w-full grid grid-cols-2 gap-4">
-          <CustomButton>
-            <span>
-              <FcGoogle />
-            </span>
-            Google
-          </CustomButton>
-          <CustomButton>
-            <span>
-              <FaGithub />
-            </span>
-            Github
-          </CustomButton>
-        </div>
-      </CardFooter>
-    </Card>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Secure, encrypted connection
+        </p>
+      </div>
+    </div>
   );
 }

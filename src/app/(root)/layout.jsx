@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="min-w-screen min-h-screen flex justify-center items-center">
+      <body className="max-w-screen min-h-screen flex justify-center items-center pt-14">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

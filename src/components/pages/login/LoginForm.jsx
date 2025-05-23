@@ -21,6 +21,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import CustomButton from "@/components/CustomButton";
 import Image from "next/image";
 import assets from "../../../../public/Images/assets";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,11 +40,11 @@ export function LoginForm() {
     <div>
       <Card className="mx-auto max-w-md w-full shadow-lg">
         <CardHeader className="space-y-1">
-          <div className="flex justify-center mb-2">
+          <div className="flex justify-center mb-2 p-4">
             <Image
               src={assets.logo}
               alt="KITI-KARD"
-              className="w-30 h-30 object-cover"
+              className="w-30 object-cover"
             ></Image>
           </div>
           <CardTitle className="text-2xl text-center">Welcome back</CardTitle>
@@ -55,7 +56,6 @@ export function LoginForm() {
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                
                 <Input
                   id="email"
                   type="email"
@@ -66,7 +66,6 @@ export function LoginForm() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center justify-between">
-            
                   <a
                     href="#"
                     className="text-sm text-text underline-offset-4 hover:underline"
@@ -125,7 +124,7 @@ export function LoginForm() {
               </span>
               Google
             </CustomButton>
-            <CustomButton>
+            <CustomButton onClick={() => signIn("github")}>
               <span>
                 <FaGithub />
               </span>

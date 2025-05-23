@@ -1,9 +1,13 @@
+
 import React from "react";
 import { LoginForm } from "@/components/pages/login/LoginForm";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import Footer from "@/components/pages/login/Footer";
 
+
 function Main() {
+  
+
   return (
     <>
       <div className="w-full h-full">

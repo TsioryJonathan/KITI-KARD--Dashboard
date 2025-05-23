@@ -1,6 +1,7 @@
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { Raleway, Inter, Poppins, Montserrat } from "next/font/google";
+import { Providers } from "../provider";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -51,7 +52,9 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="max-w-screen min-h-screen flex justify-center items-center pt-14">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Providers>{children}</Providers>
+        </ThemeProvider>
       </body>
     </html>
   );

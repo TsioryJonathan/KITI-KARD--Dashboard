@@ -1,8 +1,10 @@
-import logo from "./logo.png";
+import logoLight from "./logo.png";
+import logoDark from "./logo-light.png"
 
 import user from "./user.png";
 const assets = {
-  logo,
+  logoLight,
+  logoDark,
   user,
 };
 

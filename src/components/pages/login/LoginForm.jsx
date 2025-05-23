@@ -49,7 +49,7 @@ export function LoginForm() {
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <Image
-              src={currentTheme === "dark" ? assets.logoDark : assets.logo}
+              src={currentTheme === "dark" ? assets.logoDark : assets.logoLight}
               alt="KITI-KARD"
               className="w-30 h-30 object-cover"
             ></Image>

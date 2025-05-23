@@ -55,18 +55,18 @@ export function LoginForm() {
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                
                 <Input
                   id="email"
                   type="email"
-                  placeholder="name@example.com"
+                  placeholder="Enter your email here"
                   required
                   className="bg-background"
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
+            
                   <a
                     href="#"
                     className="text-sm text-text underline-offset-4 hover:underline"

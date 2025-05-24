@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -22,10 +22,17 @@ import CustomButton from "@/components/CustomButton";
 import Image from "next/image";
 import assets from "../../../../public/Images/assets";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useTheme } from "next-themes";
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingGithub, setIsLoadingGithub] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const currentTheme = mounted ? resolvedTheme || theme : "dark";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +50,7 @@ export function LoginForm() {
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2 p-4">
             <Image
-              src={assets.logo}
+              src={currentTheme === "dark" ? assets.logoDark : assets.logoLight}
               alt="KITI-KARD"
               className="w-30 object-cover"
             ></Image>

@@ -25,6 +25,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingGithub, setIsLoadingGithub] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -124,11 +125,20 @@ export function LoginForm() {
               </span>
               Google
             </CustomButton>
-            <CustomButton onClick={() => signIn("github")}>
+            <CustomButton
+              onClick={() => {
+                setIsLoadingGithub(true);
+                signIn("github");
+              }}
+            >
               <span>
                 <FaGithub />
               </span>
-              Github
+              {isLoadingGithub ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                "Github"
+              )}
             </CustomButton>
           </div>
         </CardFooter>
@@ -136,9 +146,16 @@ export function LoginForm() {
       <div className="mt-8 text-center">
         <div className="inline-flex items-center justify-center p-1 bg-background/50 backdrop-blur-sm border rounded-full">
           <div className="flex space-x-1">
-            <div className="size-2 rounded-full bg-primary animate-pulse" />
-            <div className="size-2 rounded-full bg-primary/70 animate-pulse [animation-delay:0.2s]" />
-            <div className="size-2 rounded-full bg-primary/40 animate-pulse [animation-delay:0.4s]" />
+            {["", "[animation-delay:0.2s]", "[animation-delay:0.4s]"].map(
+              (delay, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`size-2 rounded-full bg-primary animate-pulse ${delay}`}
+                  />
+                );
+              }
+            )}
           </div>
         </div>
         <p className="mt-2 text-sm text-muted-foreground">

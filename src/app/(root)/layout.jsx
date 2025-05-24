@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
           name="google-site-verification"
           content="LMbpaCljXVF8_8TtEYfg0Mfc0GaLpRLWKl5hlp9uLtk"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/public/Images/logo.png" />
       </head>
       <body className="max-w-screen min-h-screen flex justify-center items-center pt-14">
         <ThemeProvider>
